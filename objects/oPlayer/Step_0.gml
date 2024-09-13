@@ -21,7 +21,7 @@ if place_meeting(x+xspd, y, oGround) {
 	if !onGround {iceSlide = false; wallHit = true;}} //Collision with a wall midair disables ice & running
 x += xspd; 
 //-------------------------------Y Movement-------------------------------\\
-if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed {
+if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed { //Diving conditions
 	yspd = -2; diveTrue = true; grav += addGrav;} //Diving physics
 if onGround {
 	if iceSlide and slideVel <= jumpIceSpd {jspd[0] = jumpIce;} //Ice jump height
