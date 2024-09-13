@@ -9,7 +9,7 @@ if moveDir != 0 {moveConst = moveDir;} else {moveDir = moveConst;} //Log directi
 image_xscale = moveConst; //Flip image based on direction
 slideVel += slideTime * (rightKey + leftKey); //Amount of slide
 if !rightKey and !leftKey and !(slideVel <= 0) {slideVel -= slideTime; //Slide after movement
-	jumpTrue = false; jumpTimer = jumpFrames;} //Reset run jump
+	jumpTrue = false; jumpTimer = jumpFrames; moveSpd = walkSpd;} //Reset run jump
 if slideVel >= moveSpd {slideVel--;} if slideVel <= 0 {slideVel = 0;} //Speed limits
 if !onGround and !runKey {wallHit = true;} //Can't start running in the air
 xspd = slideVel * moveDir; //Get xspd 
@@ -18,11 +18,11 @@ if place_meeting(x+xspd, y, oGround) {
 	var _pixelCheck = _subPixel * sign(xspd) 
 	while !place_meeting(x+_pixelCheck, y, oGround) {x += _pixelCheck;} //Scoot up to wall precisely
 	xspd = 0; slideVel = 0; //Collision with a wall
-	if !onGround {iceSlide = false; wallHit = true;}} //Collision with a wall midair disables ice & running
+	if !onGround {iceSlide = false;}} //Collision with a wall midair disables ice
 x += xspd; 
 //-------------------------------Y Movement-------------------------------\\
 if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed { //Diving conditions
-	yspd = -1; diveTrue = true; grav += addGrav; termVel += addVel;} //Diving physics
+	yspd = 2; diveTrue = true; grav += addGrav; termVel += addVel;} //Diving physics
 if onGround {
 	if iceSlide and slideVel <= jumpIceSpd {jspd[0] = jumpIce;} //Ice jump height
 	else if !iceSlide and runKey and jumpTimer = 0 {jspd[0] = jumpRun;} //Run jump height
@@ -32,6 +32,7 @@ if coyoteHangTimer > 0 {coyoteHangTimer--;} //Coyote hang timer
 else {yspd += grav; setOnGround(false)} //Gravity, no longer on the ground
 if yspd > termVel {yspd = termVel;} //Cap falling speed
 if onGround {jumpCount = 0; jumpHoldTimer = 0; //Reset jump count & timer on ground
+	jumpMax = 1; //Reset jump count
 	if diveTrue {diveTrue = false; cancelTrue = false; grav -= addGrav; termVel -= addVel;} //Reset dive count
 	coyoteJumpTimer = coyoteJumpFrames; wallHit = false;} //Reset coyote jump timer & running
 else {coyoteJumpTimer--; //Coyote jump timer
