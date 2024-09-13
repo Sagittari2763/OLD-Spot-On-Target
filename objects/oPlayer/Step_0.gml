@@ -22,7 +22,7 @@ if place_meeting(x+xspd, y, oGround) {
 x += xspd; 
 //-------------------------------Y Movement-------------------------------\\
 if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed { //Diving conditions
-	yspd = -2; diveTrue = true; grav += addGrav;} //Diving physics
+	yspd = -1; diveTrue = true; grav += addGrav; termVel += addVel;} //Diving physics
 if onGround {
 	if iceSlide and slideVel <= jumpIceSpd {jspd[0] = jumpIce;} //Ice jump height
 	else if !iceSlide and runKey and jumpTimer = 0 {jspd[0] = jumpRun;} //Run jump height
@@ -32,7 +32,7 @@ if coyoteHangTimer > 0 {coyoteHangTimer--;} //Coyote hang timer
 else {yspd += grav; setOnGround(false)} //Gravity, no longer on the ground
 if yspd > termVel {yspd = termVel;} //Cap falling speed
 if onGround {jumpCount = 0; jumpHoldTimer = 0; //Reset jump count & timer on ground
-	if diveTrue {diveTrue = false; cancelTrue = false; grav -= addGrav;} //Reset dive count
+	if diveTrue {diveTrue = false; cancelTrue = false; grav -= addGrav; termVel -= addVel;} //Reset dive count
 	coyoteJumpTimer = coyoteJumpFrames; wallHit = false;} //Reset coyote jump timer & running
 else {coyoteJumpTimer--; //Coyote jump timer
 	if jumpCount == 0 and coyoteJumpTimer <= 0 {jumpCount = 1;}} //Counts as a jump after coyote time expires 
@@ -54,6 +54,3 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 	else {iceSlide = false}} //No ice
 y += yspd;
 //-------------------------------Attacking-------------------------------\\
-if atkKeyPressed and atkCool < 0 {
-	slideVel += atkSlide; atkCool = atkFrames;} //Sliding and resetting cooldown
-if atkCool > -atkFullFrames {atkCool--;} //Timer for attacking
