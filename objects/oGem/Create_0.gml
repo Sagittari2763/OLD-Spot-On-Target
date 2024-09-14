@@ -1,0 +1,1 @@
+global.gemCount = 0;
