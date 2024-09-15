@@ -68,5 +68,3 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 	else {iceSlide = false}} //No ice
 
 y += yspd;
-
-//-------------------------------Attacking-------------------------------\\

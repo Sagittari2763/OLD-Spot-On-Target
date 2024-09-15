@@ -60,5 +60,3 @@ coyoteHangFrames = 3; //How many frames the player hangs in the air before falli
 coyoteHangTimer = 0; //How many frames the player has hung in the air before falling
 coyoteJumpFrames = 6; //How many frames the player falls before they can't jump
 coyoteJumpTimer = 0; //How many frames the player has fallen before they can't jump
-
-//-------------------------------Attacking-------------------------------\\

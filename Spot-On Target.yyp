@@ -32,6 +32,7 @@
     {"id":{"name":"level_1","path":"rooms/level_1/level_1.yy",},},
     {"id":{"name":"title","path":"rooms/title/title.yy",},},
     {"id":{"name":"player_controls","path":"scripts/player_controls/player_controls.yy",},},
+    {"id":{"name":"todo_list","path":"scripts/todo_list/todo_list.yy",},},
     {"id":{"name":"sGem","path":"sprites/sGem/sGem.yy",},},
     {"id":{"name":"sGround","path":"sprites/sGround/sGround.yy",},},
     {"id":{"name":"sIceGround","path":"sprites/sIceGround/sIceGround.yy",},},
