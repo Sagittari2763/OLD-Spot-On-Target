@@ -1,4 +1,4 @@
-if place_meeting(x, y, oPlayer) and cooldownTimer <= 0 and !oPlayer.diveTrue { //Conditions to get an extra jump
+if place_meeting(x, y, oPlayer) and cooldownTimer <= 0 { //Conditions to get an extra jump
 	cooldownTimer = cooldownFrames; //Start cooldown
 	if oPlayer.jumpMax < oPlayer.jumpArrayLength {oPlayer.jumpMax++;}} //Add a jump to the player if they can get one
 

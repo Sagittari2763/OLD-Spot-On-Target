@@ -21,19 +21,19 @@ var _subPixel = 0.5;
 if place_meeting(x+xspd, y, oGround) { 
 	var _pixelCheck = _subPixel * sign(xspd) 
 	while !place_meeting(x+_pixelCheck, y, oGround) {x += _pixelCheck;} //Scoot up to wall precisely
-	xspd = 0; slideVel = 0; //Collision with a wall
+	xspd = 0; slideVel = 0; jumpTimer = jumpFrames; //Collision with a wall
 	if !onGround {iceSlide = false;}} //Collision with a wall midair disables ice
 	
 x += xspd; 
 
 //-------------------------------Y Movement-------------------------------\\
 if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed { //Diving conditions
-	yspd = 2; diveTrue = true; grav += addGrav; termVel += addVel;} //Diving physics
+	yspd = 2; diveTrue = true; grav = addGrav; termVel = addVel;} //Diving physics
 
 if onGround {
 	if iceSlide and slideVel <= jumpIceSpd {jspd[0] = jumpIce;} //Ice jump height
-	else if !iceSlide and runKey and jumpTimer = 0 {jspd[0] = jumpRun;} //Run jump height
-	else if !iceSlide and runKey and (leftKey or rightKey) {jumpTimer--;} //Run jump timer
+	else if !iceSlide and runKey and jumpTimer = 0 and xspd != 0 {jspd[0] = jumpRun;} //Run jump height
+	else if !iceSlide and runKey and (leftKey or rightKey) and xspd != 0 {jumpTimer--;} //Run jump timer
 	else {jspd[0] = jumpNormal;}} //Normal jump height
 
 if coyoteHangTimer > 0 {coyoteHangTimer--;} //Coyote hang timer
@@ -42,13 +42,14 @@ if yspd > termVel {yspd = termVel;} //Cap falling speed
 
 if onGround {jumpCount = 0; jumpHoldTimer = 0; //Reset jump count & timer on ground
 	jumpMax = 1; //Reset jump count
-	if diveTrue {diveTrue = false; grav -= addGrav; termVel -= addVel;} //Reset dive count
+	diveTrue = false; grav = normalGrav; termVel = normalVel; //Reset dive count
 	coyoteJumpTimer = coyoteJumpFrames; wallHit = false;} //Reset coyote jump timer & running
 else {coyoteJumpTimer--; //Coyote jump timer
 	if jumpCount == 0 and coyoteJumpTimer <= 0 {jumpCount = 1;}} //Counts as a jump after coyote time expires 
 
 if jumpKeyBuffered and jumpCount < jumpMax {jumpCount++; //Increase the counter of jumps performed
 	jumpKeyBuffered = 0; jumpKeyBufferTimer = 0; //Reset the buffer
+	diveTrue = false; grav = normalGrav; termVel = normalVel; //Reset dive
 	jumpHoldTimer = jumpHoldFrames[jumpCount-1] //Initiate Jump 
 	setOnGround(false);} //The player is no longer on the ground after jumping
 if !jumpKey {jumpHoldTimer = 0;} //Cancel jump hold
@@ -68,6 +69,8 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 
 y += yspd;
 
+//-------------------------------Sprites-------------------------------\\
 image_xscale = moveConst; //Flip image based on direction
-if abs(xspd) > 0 {sprite_index = sPlayerWalk;}
-else {sprite_index = sPlayerIdle;}
+if !onGround {sprite_index = sPlayerJump;} //Jumping sprite
+else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
+else {sprite_index = sPlayerIdle;} //Idle sprite

@@ -43,6 +43,7 @@
     {"id":{"name":"sPlay","path":"sprites/sPlay/sPlay.yy",},},
     {"id":{"name":"sPlay2","path":"sprites/sPlay2/sPlay2.yy",},},
     {"id":{"name":"sPlayerIdle","path":"sprites/sPlayerIdle/sPlayerIdle.yy",},},
+    {"id":{"name":"sPlayerJump","path":"sprites/sPlayerJump/sPlayerJump.yy",},},
     {"id":{"name":"sPlayerWalk","path":"sprites/sPlayerWalk/sPlayerWalk.yy",},},
     {"id":{"name":"sTitle","path":"sprites/sTitle/sTitle.yy",},},
   ],

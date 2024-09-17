@@ -28,8 +28,10 @@ yspd = 0;
 
 grav = .375; //Changeable -- how fast the player can jump
 termVel = 7; //Changeable -- how fast the player can fall
-addGrav = .2; //Changeable -- how fast the player can fall after diving
-addVel = 3; //Changeable -- how fast the player will fall after diving
+normalGrav = .375; //Changeable -- how fast the player can jump normally
+normalVel = 7; //Changeable -- how fast the player can fall normally
+addGrav = .575; //Changeable -- how fast the player can fall after diving
+addVel = 10; //Changeable -- how fast the player will fall after diving
 
 jspd[0] = 0; //How long the player can hold a jumpcharge jump, change through below variables
 jumpNormal = -3.6; //Changeable -- how high the player can jump
