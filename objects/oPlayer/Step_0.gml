@@ -8,7 +8,6 @@ else {slideTime = normalSlideTime;} //Set normal slide
 
 moveDir = rightKey - leftKey; //Player direction
 if moveDir != 0 {moveConst = moveDir;} else {moveDir = moveConst;} //Log direction for sprite
-image_xscale = moveConst; //Flip image based on direction
 
 slideVel += slideTime * (rightKey + leftKey); //Amount of slide
 if !rightKey and !leftKey and !(slideVel <= 0) {slideVel -= slideTime*slideEndMultiplier; //Slide after movement
@@ -68,3 +67,7 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 	else {iceSlide = false}} //No ice
 
 y += yspd;
+
+image_xscale = moveConst; //Flip image based on direction
+if abs(xspd) > 0 {sprite_index = sPlayerWalk;}
+else {sprite_index = sPlayerIdle;}
