@@ -1,6 +1,18 @@
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
 
+//-------------------------------Attacking & Damage-------------------------------\\
+if atkKeyPressed and atkCoolTimer <= 0 and jumpHoldTimer <= 0 { //Attack conditions
+	atkTimer = atkFrames; slideVel = moveSpd; atkLagTimer = atkLagFrames; if yspd < -1 {yspd = -1;} //Setup attack
+	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
+	atkCoolTimer = atkCoolFrames} //Reset cooldown timer
+
+if atkTimer > 0 {atkTimer--;} //Timer & hitbox follow player
+else {instance_destroy(oAttack) //Delete hitbox
+	atkLagTimer--; atkCoolTimer--;} //Decrease damage grace period & cooldown timer
+	
+if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 {instance_destroy();}
+
 //-------------------------------X Movement-------------------------------\\
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
 if iceSlide {slideTime = iceSlideTime;} //Set ice slide
@@ -27,8 +39,8 @@ if place_meeting(x+xspd, y, oGround) {
 x += xspd; 
 
 //-------------------------------Y Movement-------------------------------\\
-if diveKeyPressed and !diveTrue and !onGround and !jumpKeyPressed { //Diving conditions
-	yspd = 2; diveTrue = true; grav = addGrav; termVel = addVel;} //Diving physics
+if diveKeyPressed and !diveTrue and !onGround and !jumpKey { //Diving conditions
+	if yspd < 2 {yspd = 2;} diveTrue = true; grav = addGrav; termVel = addVel;} //Diving physics
 
 if onGround {
 	if iceSlide and slideVel <= jumpIceSpd {jspd[0] = jumpIce;} //Ice jump height
@@ -69,8 +81,11 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 
 y += yspd;
 
-//-------------------------------Sprites-------------------------------\\
+//-------------------------------Sprites & Extra-------------------------------\\
 image_xscale = moveConst; //Flip image based on direction
-if !onGround {sprite_index = sPlayerJump;} //Jumping sprite
+if atkTimer > 0 {sprite_index = sPlayerAttack;} //Attacking sprite
+else if !onGround {sprite_index = sPlayerJump;} //Jumping sprite
 else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
 else {sprite_index = sPlayerIdle;} //Idle sprite
+
+if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
