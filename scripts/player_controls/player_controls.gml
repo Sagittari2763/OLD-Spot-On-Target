@@ -29,8 +29,13 @@ function getControls() {
 	atkKeyPressed = clamp(atkKeyPressed,0,1);
 	
 	//------------Jump Key Buffering------------\\ 
-	if jumpKeyPressed {jumpKeyBufferTimer = jumpKeyBufferTime;} //Resets jump buffer timer
+	if jumpKeyPressed {jumpKeyBufferTimer = jumpKeyBufferTime;}
 	if jumpKeyBufferTimer > 0 {
 	jumpKeyBuffered = 1;
 	jumpKeyBufferTimer--;}
-	else {jumpKeyBuffered = 0;}}
+	else {jumpKeyBuffered = 0;}
+	
+	//------------Pause Menu------------\\ 
+	if keyboard_check_pressed(vk_escape) {
+	if instance_exists(oPauseShader) {oPauseShader.image_alpha = 0.25; instance_destroy(oPauseShader);}
+	else {instance_create_depth(x, y, -9, oPauseShader); oPauseShader.image_alpha = 0.25;}}}

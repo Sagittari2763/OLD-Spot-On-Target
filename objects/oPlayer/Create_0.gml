@@ -70,6 +70,15 @@ atkCoolFrames = 22; //How many frames before the player can attack again
 atkCoolTimer = 0; //Timer for above
 atkLagFrames = 3; //How many frames the player can avoid damage after attacking
 atkLagTimer = 0; //Timer for above
+dashAtkSpd = 4; //How fast the player needs to run to dash attack
 
+healthMeter = 3; //How much health the player gets
+healthAmount = healthMeter; //How much health the player starts with
+dmgLagFrames = 60; //How long the player can go without taking damage again
+dmgLagTimer = 0; //Timer for above
 
-
+//-------------------------------Abilities-------------------------------\\
+global.launchFurther = false; //Launch the player further upon death, no enemy timer either
+global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
+global.zoomies = false; //Player speed is irrationally fast
+zoomiesSpd = 12; //How fast the player runs on zoomies

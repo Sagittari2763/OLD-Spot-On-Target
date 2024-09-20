@@ -1,9 +1,14 @@
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
+if !instance_exists(oPauseShader) { //Stopping player from doing anything in pause
 
 //-------------------------------Attacking & Damage-------------------------------\\
-if atkKeyPressed and atkCoolTimer <= 0 and jumpHoldTimer <= 0 { //Attack conditions
-	atkTimer = atkFrames; slideVel = moveSpd; atkLagTimer = atkLagFrames; if yspd < -1 {yspd = -1;} //Setup attack
+instance_create_depth(16, 16, -8, oHealthBar);
+instance_create_depth(74, 17, -8, oIcon)
+
+if atkKeyPressed and atkCoolTimer <= 0 { //Attack conditions
+	atkTimer = atkFrames; atkLagTimer = atkLagFrames; jumpHoldTimer = 0; if yspd < 0 {yspd = 0;} //Setup attack
+	if runKey and slideVel > dashAtkSpd {slideVel = moveSpd/0.5;} //Run dash attack
 	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
 	atkCoolTimer = atkCoolFrames} //Reset cooldown timer
 
@@ -11,12 +16,19 @@ if atkTimer > 0 {atkTimer--;} //Timer & hitbox follow player
 else {instance_destroy(oAttack) //Delete hitbox
 	atkLagTimer--; atkCoolTimer--;} //Decrease damage grace period & cooldown timer
 	
-if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 {instance_destroy();}
+if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 and dmgLagTimer <= 0 {healthAmount--;} //Removes one health
+if y > oVoid.y {healthAmount = 0; global.pitFall = true;}
+if healthAmount > 0 {dmgLagTimer = dmgLagFrames;} //Damage invincibility frames
+else {image_alpha = 0; //Makes the player invisible
+	instance_create_depth(x, y, -5, oPlayerDeath); //Spawns player death in place
+	instance_destroy();} //Deletes player
+dmgLagTimer--;
 
 //-------------------------------X Movement-------------------------------\\
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
 if iceSlide {slideTime = iceSlideTime;} //Set ice slide
 else {slideTime = normalSlideTime;} //Set normal slide
+if global.zoomies {moveSpd = zoomiesSpd;}
 
 moveDir = rightKey - leftKey; //Player direction
 if moveDir != 0 {moveConst = moveDir;} else {moveDir = moveConst;} //Log direction for sprite
@@ -89,3 +101,5 @@ else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
 else {sprite_index = sPlayerIdle;} //Idle sprite
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
+
+}

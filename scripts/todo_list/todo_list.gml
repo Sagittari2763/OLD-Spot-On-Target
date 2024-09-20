@@ -1,12 +1,8 @@
 //Player Functions
-	//Health system & taking damage
-	//Attacking & attack cooldown
-	//Death function
-	//Falling out of the level
-	//Slippery corners while jumping
 	//Water damage
 		//Takes damage after falling into water
 		//Respawns near the water or at the last checkpoint
+	//Indicate when the player has an extra jump
 	
 //Items & Blocks
 	//Healing potion/heart
