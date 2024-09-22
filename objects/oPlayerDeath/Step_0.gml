@@ -17,3 +17,5 @@ if airTime <= 0 { //If the player is not being held in the air
 
 	enemyTimer--;} //Count down enemy collision timer
 else {airTime--;} //Count down air timer
+
+if keyboard_check_pressed(vk_backspace) {room_goto(room);} //reset room

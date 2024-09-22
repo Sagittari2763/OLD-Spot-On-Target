@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sJumpCharge_1",
-    "path":"sprites/sJumpCharge_1/sJumpCharge_1.yy",
+    "name":"sJumpCharge",
+    "path":"sprites/sJumpCharge/sJumpCharge.yy",
   },
   "spriteMaskId":null,
   "visible":true,

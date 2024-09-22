@@ -1,0 +1,1 @@
+timer = 120; //How many frames the particle lasts

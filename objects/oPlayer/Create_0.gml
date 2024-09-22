@@ -6,7 +6,7 @@ else {onGround = false; coyoteHangTimer = 0;}} //No longer on ground
 controlsSetup(); //Sets up controls from player_controls
 
 //-------------------------------X Movement-------------------------------\\
-xspd = 0;
+xspd = 0; //How fast the player is going horizontally
 
 moveDir = 0; //Current direction of movement
 moveConst = 1; //Last direction of movement
@@ -14,8 +14,8 @@ moveSpd = 0; //The current moving speed, walking or running
 walkSpd = 3; //Fastest walking speed
 runSpd = 7; //Fastest running speed
 
-slideVel = 0;
-slideTime = 0; 
+slideVel = 0; //Calculate how fast the player is going
+slideTime = 0; //How much the player slides before/after full speed movement
 iceLevel = false; //If the entire level is slippery
 iceSlide = false; //If the current ground is slippery
 normalSlideTime = 0.22; //How much the player can slide normally
@@ -24,7 +24,7 @@ slideEndMultiplier = 1.8; //How much less the player will slide at the end of mo
 
 //-------------------------------Y Movement-------------------------------\\
 onGround = true; //If the player is on the ground
-yspd = 0;
+yspd = 0; //How fast the player is traveling vertically
 
 grav = .375; //How fast the player can jump
 termVel = 7; //How fast the player can fall
@@ -52,6 +52,7 @@ jumpHoldFrames[2] = 9; //How long the player can hold a second jumpcharge jump
 jumpHoldFrames[3] = 3; //How long the player can hold a third jumpcharge jump
 jumpHoldTimer = 0; //How many frames the player has held a jump
 
+pos = 0; //Position of a particle
 jumpTrue = false; //If the player input a jump
 wallHit = false; //If the player should be forced to stop running
 diveTrue = false; //If the player dived
@@ -76,6 +77,8 @@ healthMeter = 3; //How much health the player gets
 healthAmount = healthMeter; //How much health the player starts with
 dmgLagFrames = 60; //How long the player can go without taking damage again
 dmgLagTimer = 0; //Timer for above
+
+global.pitFall = false; //If the player fell down a pit
 
 //-------------------------------Abilities-------------------------------\\
 global.launchFurther = false; //Launch the player further upon death, no enemy timer either

@@ -16,13 +16,13 @@ if atkTimer > 0 {atkTimer--;} //Timer & hitbox follow player
 else {instance_destroy(oAttack) //Delete hitbox
 	atkLagTimer--; atkCoolTimer--;} //Decrease damage grace period & cooldown timer
 	
-if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 and dmgLagTimer <= 0 {healthAmount--;} //Removes one health
-if y > oVoid.y {healthAmount = 0; global.pitFall = true;}
-if healthAmount > 0 {dmgLagTimer = dmgLagFrames;} //Damage invincibility frames
-else {image_alpha = 0; //Makes the player invisible
-	instance_create_depth(x, y, -5, oPlayerDeath); //Spawns player death in place
+if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 and dmgLagTimer <= 0 {healthAmount--; //Removes one health
+	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
+if healthAmount <= 0 {image_alpha = 0; //Makes the player invisible
+	instance_create_depth(x, y, oGround.depth-1, oPlayerDeath); //Spawns player death in place
 	instance_destroy();} //Deletes player
-dmgLagTimer--;
+if y > oVoid.y {healthAmount = 0; global.pitFall = true;} //If the player falls out of the level
+dmgLagTimer--; //Decrease timer for damage invincibility
 
 //-------------------------------X Movement-------------------------------\\
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
@@ -74,7 +74,13 @@ else {coyoteJumpTimer--; //Coyote jump timer
 if jumpKeyBuffered and jumpCount < jumpMax {jumpCount++; //Increase the counter of jumps performed
 	jumpKeyBuffered = 0; jumpKeyBufferTimer = 0; //Reset the buffer
 	diveTrue = false; grav = normalGrav; termVel = normalVel; //Reset dive
-	jumpHoldTimer = jumpHoldFrames[jumpCount-1] //Initiate Jump 
+	jumpHoldTimer = jumpHoldFrames[jumpCount-1] //Initiate Jump
+	if jumpCount > 1 {pos = random_range(-12, 12); //Decide particle location
+		if !(jumpCount > 3) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle1);} //Create particle if the player hasn't jumped thrice
+		pos = random_range(-6, 6); //Decide particle location
+		if !(jumpCount > 2) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle2);} //Create particle if the player hasn't jumped twice
+		pos = random_range(-3, 3); //Decide particle location
+		instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle3);} //Create particle
 	setOnGround(false);} //The player is no longer on the ground after jumping
 if !jumpKey {jumpHoldTimer = 0;} //Cancel jump hold
 if jumpHoldTimer > 0 {yspd = jspd[jumpCount-1]; //Hold jump

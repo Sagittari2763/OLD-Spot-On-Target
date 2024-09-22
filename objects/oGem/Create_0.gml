@@ -1,1 +1,1 @@
-global.gemCount = 0;
+global.gemCount = 0; //Global gem counter
