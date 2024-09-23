@@ -3,6 +3,12 @@ function setOnGround(_val = true) { //If the player is on the ground
 if _val == true {onGround = true; coyoteHangTimer = coyoteHangFrames;} //Resets on ground
 else {onGround = false; coyoteHangTimer = 0;}} //No longer on ground
 
+function playerDeath() {
+	healthAmount = 0; //Sets the health to 0
+	visible = false; //Makes the player invisible
+	instance_create_depth(x, y, oGround.depth-1, oPlayerDeath); //Spawns player death in place
+	instance_destroy();} //Deletes player
+
 controlsSetup(); //Sets up controls from player_controls
 
 //-------------------------------X Movement-------------------------------\\
@@ -13,6 +19,9 @@ moveConst = 1; //Last direction of movement
 moveSpd = 0; //The current moving speed, walking or running
 walkSpd = 3; //Fastest walking speed
 runSpd = 7; //Fastest running speed
+
+instantFrames = 6;
+instantTimer = 0;
 
 slideVel = 0; //Calculate how fast the player is going
 slideTime = 0; //How much the player slides before/after full speed movement
@@ -75,9 +84,11 @@ dashAtkSpd = 4; //How fast the player needs to run to dash attack
 
 healthMeter = 3; //How much health the player gets
 healthAmount = healthMeter; //How much health the player starts with
-dmgLagFrames = 60; //How long the player can go without taking damage again
+dmgLagFrames = 120; //How long the player can go without taking damage again
 dmgLagTimer = 0; //Timer for above
+dmgLagEnd = 5; //How many frames the player will appear normal again despite having a cooldown
 
+visible = true; //Player is visible
 global.pitFall = false; //If the player fell down a pit
 
 //-------------------------------Abilities-------------------------------\\

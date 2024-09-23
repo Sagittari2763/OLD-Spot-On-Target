@@ -1,5 +1,5 @@
 if place_meeting(x, y, oAttack) { //If attacked
-	image_alpha = 0; //Make it invisible while creating death animation
+	visible = false; //Make it invisible while creating death animation
 	instance_create_depth(x, y, depth, oGoobDeath); //Create death animation
 	instance_destroy()} //Destroy the enemy
 
@@ -9,12 +9,12 @@ if slideVel >= moveSpd {slideVel = moveSpd; slideTime = slideVel;} //Speed limit
 if slideVel <= -moveSpd {slideVel = -moveSpd;} //Speed limit
 if place_meeting(x + slideVel, y-0.5, oGround) or place_meeting(x + slideVel, y-0.5, oEnemy) {
 	slideVel = 0; moveDir = -moveDir; //Flip direction
-	if sprite_index = sGoobIdle {sprIgnore = true; image_xscale = sprDir;}} //Stop flipping
+	if sprite_index = sGoobIdle {image_index = 0; sprIgnore = true; image_xscale = sprDir;}} //Stop flipping + reset anim.
 else {sprIgnore = false; sprDir = moveDir;} //Continue flipping
 x += slideVel; //Add onto x
 
 if place_meeting(x, y+yspd, oGround) or place_meeting(x, y+yspd, oEnemy) {yspd = 0;} //Collision
-else {yspd += grav; slideTime = slide;} //Add gravity + restart x delay time
+else {yspd += grav; slideTime = slide; image_index = 0;} //Add gravity + restart x delay time + reset anim.
 if yspd >= termVel {yspd = termVel;} //Speed limit
 y += yspd; //Add onto y
 

@@ -7,7 +7,7 @@ mask_index = sPlayerIdle; //Set mask index
 instance_create_depth(16, 16, -8, oHealthBar);
 instance_create_depth(74, 17, -8, oIcon)
 
-if atkKeyPressed and atkCoolTimer <= 0 { //Attack conditions
+if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack conditions
 	atkTimer = atkFrames; atkLagTimer = atkLagFrames; jumpHoldTimer = 0; //Setup attack
 	if runKey and slideVel > dashAtkSpd {slideVel = moveSpd/0.5; if yspd < 0 {yspd = 0;}} //Run dash attack
 	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
@@ -19,11 +19,11 @@ else {instance_destroy(oAttack) //Delete hitbox
 	
 if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 and dmgLagTimer <= 0 {healthAmount--; //Removes one health
 	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
-if healthAmount <= 0 {image_alpha = 0; //Makes the player invisible
-	instance_create_depth(x, y, oGround.depth-1, oPlayerDeath); //Spawns player death in place
-	instance_destroy();} //Deletes player
-if y > oVoid.y {healthAmount = 0; global.pitFall = true;} //If the player falls out of the level
+if healthAmount <= 0 {playerDeath();} //Kills player
+if y > oVoid.y {playerDeath(); global.pitFall = true;} //If the player falls out of the level
 dmgLagTimer--; //Decrease timer for damage invincibility
+if dmgLagTimer > dmgLagEnd {image_alpha = 0.5} //Turn transparent during damage cooldown
+else {image_alpha = true;} //After damage cooldown
 
 //-------------------------------X Movement-------------------------------\\
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
@@ -46,8 +46,11 @@ var _subPixel = 0.5;
 if place_meeting(x+xspd, y, oGround) { 
 	var _pixelCheck = _subPixel * sign(xspd) 
 	while !place_meeting(x+_pixelCheck, y, oGround) {x += _pixelCheck;} //Scoot up to wall precisely
-	xspd = 0; slideVel = 0; jumpTimer = jumpFrames; //Collision with a wall
+	xspd = 0; jumpTimer = jumpFrames; //Collision with a wall
+	if instantTimer <= 0 {slideVel = 0;} //Slow down after timer
 	if !onGround {iceSlide = false;}} //Collision with a wall midair disables ice
+else {instantTimer = instantFrames;} //Reset timer while not colliding
+instantTimer--; //Count timer down
 	
 x += xspd; 
 
@@ -107,7 +110,7 @@ if atkTimer > 0 {sprite_index = sPlayerAttack;} //Attacking sprite
 else if !onGround {if jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlayerJumpCharge;} //Charged jumping sprite
 	else {sprite_index = sPlayerJump;}} //Jumping sprite
 else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
-else {sprite_index = sPlayerIdle;} //Idle sprite
+else {image_index = 0; sprite_index = sPlayerIdle;} //Idle sprite
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
 
