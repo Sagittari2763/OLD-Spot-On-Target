@@ -1,14 +1,15 @@
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
 if !instance_exists(oPauseShader) { //Stopping player from doing anything in pause
+mask_index = sPlayerIdle; //Set mask index
 
 //-------------------------------Attacking & Damage-------------------------------\\
 instance_create_depth(16, 16, -8, oHealthBar);
 instance_create_depth(74, 17, -8, oIcon)
 
 if atkKeyPressed and atkCoolTimer <= 0 { //Attack conditions
-	atkTimer = atkFrames; atkLagTimer = atkLagFrames; jumpHoldTimer = 0; if yspd < 0 {yspd = 0;} //Setup attack
-	if runKey and slideVel > dashAtkSpd {slideVel = moveSpd/0.5;} //Run dash attack
+	atkTimer = atkFrames; atkLagTimer = atkLagFrames; jumpHoldTimer = 0; //Setup attack
+	if runKey and slideVel > dashAtkSpd {slideVel = moveSpd/0.5; if yspd < 0 {yspd = 0;}} //Run dash attack
 	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
 	atkCoolTimer = atkCoolFrames} //Reset cooldown timer
 
@@ -71,7 +72,8 @@ if onGround {jumpCount = 0; jumpHoldTimer = 0; //Reset jump count & timer on gro
 else {coyoteJumpTimer--; //Coyote jump timer
 	if jumpCount == 0 and coyoteJumpTimer <= 0 {jumpCount = 1;}} //Counts as a jump after coyote time expires 
 
-if jumpKeyBuffered and jumpCount < jumpMax {jumpCount++; //Increase the counter of jumps performed
+if (jumpKeyBuffered and jumpCount < jumpMax) {
+	jumpCount++; //Increase the counter of jumps performed
 	jumpKeyBuffered = 0; jumpKeyBufferTimer = 0; //Reset the buffer
 	diveTrue = false; grav = normalGrav; termVel = normalVel; //Reset dive
 	jumpHoldTimer = jumpHoldFrames[jumpCount-1] //Initiate Jump
@@ -102,7 +104,8 @@ y += yspd;
 //-------------------------------Sprites & Extra-------------------------------\\
 image_xscale = moveConst; //Flip image based on direction
 if atkTimer > 0 {sprite_index = sPlayerAttack;} //Attacking sprite
-else if !onGround {sprite_index = sPlayerJump;} //Jumping sprite
+else if !onGround {if jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlayerJumpCharge;} //Charged jumping sprite
+	else {sprite_index = sPlayerJump;}} //Jumping sprite
 else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
 else {sprite_index = sPlayerIdle;} //Idle sprite
 
