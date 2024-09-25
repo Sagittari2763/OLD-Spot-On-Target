@@ -20,8 +20,8 @@ moveSpd = 0; //The current moving speed, walking or running
 walkSpd = 3; //Fastest walking speed
 runSpd = 7; //Fastest running speed
 
-instantFrames = 6;
-instantTimer = 0;
+instantFrames = 6; //How many frames the player can touch a wall without losing speed
+instantTimer = 0; //Timer for above
 
 slideVel = 0; //Calculate how fast the player is going
 slideTime = 0; //How much the player slides before/after full speed movement
@@ -86,7 +86,7 @@ healthMeter = 3; //How much health the player gets
 healthAmount = healthMeter; //How much health the player starts with
 dmgLagFrames = 120; //How long the player can go without taking damage again
 dmgLagTimer = 0; //Timer for above
-dmgLagEnd = 5; //How many frames the player will appear normal again despite having a cooldown
+dmgLagEnd = 10; //How many frames the player will appear normal again despite having a cooldown
 
 visible = true; //Player is visible
 global.pitFall = false; //If the player fell down a pit

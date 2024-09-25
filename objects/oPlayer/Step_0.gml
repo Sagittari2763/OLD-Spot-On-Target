@@ -4,12 +4,12 @@ if !instance_exists(oPauseShader) { //Stopping player from doing anything in pau
 mask_index = sPlayerIdle; //Set mask index
 
 //-------------------------------Attacking & Damage-------------------------------\\
-instance_create_depth(16, 16, -8, oHealthBar);
-instance_create_depth(74, 17, -8, oIcon)
+instance_create_depth(16, 16, -8, oHealthBar); //Create health bar
+instance_create_depth(74, 17, -8, oIcon) //Create status effects
 
 if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack conditions
-	atkTimer = atkFrames; atkLagTimer = atkLagFrames; jumpHoldTimer = 0; //Setup attack
-	if runKey and slideVel > dashAtkSpd {slideVel = moveSpd/0.5; if yspd < 0 {yspd = 0;}} //Run dash attack
+	atkTimer = atkFrames; atkLagTimer = atkLagFrames; //Setup attack
+	if runKey and slideVel > dashAtkSpd {jumpHoldTimer = 0; slideVel = moveSpd/0.5; if yspd < 0 {yspd = 0;}} //Run dash attack
 	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
 	atkCoolTimer = atkCoolFrames} //Reset cooldown timer
 
@@ -44,7 +44,7 @@ xspd = slideVel * moveDir; //Get xspd
 
 var _subPixel = 0.5; 
 if place_meeting(x+xspd, y, oGround) { 
-	var _pixelCheck = _subPixel * sign(xspd) 
+	var _pixelCheck = _subPixel * sign(xspd);
 	while !place_meeting(x+_pixelCheck, y, oGround) {x += _pixelCheck;} //Scoot up to wall precisely
 	xspd = 0; jumpTimer = jumpFrames; //Collision with a wall
 	if instantTimer <= 0 {slideVel = 0;} //Slow down after timer
@@ -93,7 +93,7 @@ if jumpHoldTimer > 0 {yspd = jspd[jumpCount-1]; //Hold jump
 
 _subPixel = 0.5; 
 if place_meeting(x, y+yspd, oGround) {
-	var _pixelCheck = _subPixel * sign(yspd) 
+	var _pixelCheck = _subPixel * sign(yspd);
 	while !place_meeting(x, y+_pixelCheck, oGround) {y += _pixelCheck;} //Scoot up to wall precisely
 	if yspd < 0 {jumpHoldTimer = 0;} //Bonk your head on a ceiling tile
 	yspd = 0;} //Collision with the ground
@@ -106,12 +106,15 @@ y += yspd;
 
 //-------------------------------Sprites & Extra-------------------------------\\
 image_xscale = moveConst; //Flip image based on direction
-if atkTimer > 0 {sprite_index = sPlayerAttack;} //Attacking sprite
+if atkTimer > 0 {if !onGround and jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlayerAttackCharge;} //Charged attack sprite
+	else {sprite_index = sPlayerAttack;}} //Attacking sprite
 else if !onGround {if jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlayerJumpCharge;} //Charged jumping sprite
 	else {sprite_index = sPlayerJump;}} //Jumping sprite
 else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
-else {image_index = 0; sprite_index = sPlayerIdle;} //Idle sprite
+else {sprite_index = sPlayerIdle;} //Idle sprite
+image_speed = 1; //Play sprite
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
 
 }
+else {image_speed = 0;} //Freeze sprite

@@ -1,9 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"oGoobJump",
-  "eventList":[],
+  "%Name":"oYoobDeath",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"oGoobJump",
+  "name":"oYoobDeath",
   "overriddenProperties":[],
   "parent":{
     "name":"Spot-On Target",
@@ -28,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sGoobJump",
-    "path":"sprites/sGoobJump/sGoobJump.yy",
+    "name":"sYoobWalk",
+    "path":"sprites/sYoobWalk/sYoobWalk.yy",
   },
   "spriteMaskId":null,
   "visible":true,
