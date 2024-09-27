@@ -1,1 +1,3 @@
-global.gemCount = 0; //Global gem counter
+used = false;
+yspd = 3.6;
+yspdRate = 0.3;

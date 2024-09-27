@@ -9,8 +9,6 @@ if airTime <= 0 { //If the player is not being held in the air
 
 	if !fall {yspd = jspd; fall = true;} //Jump up when not falling
 
-	if global.launchFurther = true {enemyTimer = shortEnemyTimer; //Shortens enemy timer
-		launch = 10;} //Launch player further with ability active 
 	x += moveDir*launch; //X movement
 	y += yspd; //Y movement
 	image_angle += moveDir*2;} //Sprite rotation

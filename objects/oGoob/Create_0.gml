@@ -1,9 +1,3 @@
-function goobDeath() {
-	visible = false; //Make it invisible while creating death animation
-	instance_create_depth(x, y, depth, oGoobDeath); //Create death animation
-	if !place_meeting(x, y, oAttack) {oGoobDeath.airTime = 0;} //No air time if death isn't player
-	instance_destroy();} //Destroy the enemy
-
 slideVel = 0; //Movement of it
 moveSpd = 1; //Speed of it
 moveDir = -1; //Direction of it
@@ -17,3 +11,6 @@ instant = true; //Does it change directions instantly instead of gradually?
 
 sprDir = 0; //Direction of sprite
 sprIgnore = false; //Ignore idle sprite flipping
+
+death = false; //If the object is dead
+particle = false;

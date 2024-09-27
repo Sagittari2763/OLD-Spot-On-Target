@@ -1,29 +1,8 @@
+if instance_exists(oPlayer) {
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
 if !instance_exists(oPauseShader) { //Stopping player from doing anything in pause
 mask_index = sPlayerIdle; //Set mask index
-
-//-------------------------------Attacking & Damage-------------------------------\\
-instance_create_depth(16, 16, -8, oHealthBar); //Create health bar
-instance_create_depth(74, 17, -8, oIcon) //Create status effects
-
-if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack conditions
-	atkTimer = atkFrames; atkLagTimer = atkLagFrames; //Setup attack
-	if runKey and slideVel > dashAtkSpd {jumpHoldTimer = 0; slideVel = moveSpd/0.5; if yspd < 0 {yspd = 0;}} //Run dash attack
-	instance_create_depth(x-12, y-30, 0, oAttack); //Create attack hitbox
-	atkCoolTimer = atkCoolFrames} //Reset cooldown timer
-
-if atkTimer > 0 {atkTimer--;} //Timer & hitbox follow player
-else {instance_destroy(oAttack) //Delete hitbox
-	atkLagTimer--; atkCoolTimer--;} //Decrease damage grace period & cooldown timer
-	
-if place_meeting(x, y, oEnemy) and atkLagTimer <= 0 and dmgLagTimer <= 0 {healthAmount--; //Removes one health
-	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
-if healthAmount <= 0 {playerDeath();} //Kills player
-if y > oVoid.y {playerDeath(); global.pitFall = true;} //If the player falls out of the level
-dmgLagTimer--; //Decrease timer for damage invincibility
-if dmgLagTimer > dmgLagEnd {image_alpha = 0.5} //Turn transparent during damage cooldown
-else {image_alpha = true;} //After damage cooldown
 
 //-------------------------------X Movement-------------------------------\\
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
@@ -104,6 +83,32 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 
 y += yspd;
 
+//-------------------------------Attacking & Damage-------------------------------\\
+instance_create_depth(16, 16, -8, oHealthBar); //Create health bar
+instance_create_depth(74, 17, -8, oIcon) //Create status effects
+
+if place_meeting(x, y, oSpike) {healthAmount = 0;} //Player dies at spike
+	
+if place_meeting(x, y, oEnemy) and dmgLagTimer <= 0 {healthAmount--; //Removes one health
+	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
+if healthAmount <= 0 {playerDeath();} //Kills player
+if y > oVoid.y {playerDeath(); global.pitFall = true;} //If the player falls out of the level
+dmgLagTimer--; //Decrease timer for damage invincibility
+if dmgLagTimer > dmgLagEnd {image_alpha = 0.5;} //Turn transparent during damage cooldown
+else {image_alpha = true;} //After damage cooldown
+
+if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack conditions
+	atkStart = atkStartup; atkTimer = atkFrames; //Setup attack
+	if runKey and slideVel > dashAtkSpd {jumpHoldTimer = 0; slideVel = moveSpd/0.5; dmgLagTimer = dmgDashFrames;} //Run dash attack
+	atkCoolTimer = atkCoolFrames;} //Reset cooldown timer
+	
+if atkStart <= 0 {instance_create_depth(x-12, y-30, 0, oAttack);} //Create attack hitbox
+atkStart--; //Decrease startup timer
+
+if atkTimer > 0 {atkTimer--;} //Timer & hitbox follow player
+else {instance_destroy(oAttack) //Delete hitbox
+	atkCoolTimer--;} //Decrease cooldown timer
+
 //-------------------------------Sprites & Extra-------------------------------\\
 image_xscale = moveConst; //Flip image based on direction
 if atkTimer > 0 {if !onGround and jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlayerAttackCharge;} //Charged attack sprite
@@ -118,3 +123,7 @@ if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attac
 
 }
 else {image_speed = 0;} //Freeze sprite
+
+if keyboard_check_pressed(vk_backspace) {room_goto(room);} //reset room
+
+} //Player exists bracket

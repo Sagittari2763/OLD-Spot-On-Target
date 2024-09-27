@@ -1,8 +1,3 @@
-function yoobDeath() {
-	visible = false; //Make it invisible while creating death animation
-	instance_create_depth(x, y, depth, oYoobDeath); //Create death animation
-	instance_destroy();} //Destroy the enemy
-
 slideVel = 0; //Movement of it
 moveSpd = 1; //Speed of it
 moveDir = -1; //Direction of it
@@ -16,3 +11,7 @@ termVel = 7; //How fast it can fall
 instant = true; //Does it change directions instantly instead of gradually?
 
 sprDir = 0; //Direction of sprite
+
+//----------Death----------\\
+death = false; //If the object is dead
+particle = false;

@@ -4,6 +4,7 @@ if _val == true {onGround = true; coyoteHangTimer = coyoteHangFrames;} //Resets 
 else {onGround = false; coyoteHangTimer = 0;}} //No longer on ground
 
 function playerDeath() {
+	instance_destroy(oAttack); //Deletes any attack hitbox
 	healthAmount = 0; //Sets the health to 0
 	visible = false; //Makes the player invisible
 	instance_create_depth(x, y, oGround.depth-1, oPlayerDeath); //Spawns player death in place
@@ -74,25 +75,27 @@ coyoteJumpFrames = 6; //How many frames the player falls before they can't jump
 coyoteJumpTimer = 0; //How many frames the player has fallen before they can't jump
 
 //-------------------------------Attacking & Damage-------------------------------\\
+atkStartup = 3; //How many frames until the player can deal damage after a normal attack
+atkStart = 0; //Timer for above
 atkFrames = 18; //How many frames the attack will last
 atkTimer = 0; //Timer for above
 atkCoolFrames = 22; //How many frames before the player can attack again
 atkCoolTimer = 0; //Timer for above
-atkLagFrames = 3; //How many frames the player can avoid damage after attacking
-atkLagTimer = 0; //Timer for above
 dashAtkSpd = 4; //How fast the player needs to run to dash attack
 
 healthMeter = 3; //How much health the player gets
 healthAmount = healthMeter; //How much health the player starts with
-dmgLagFrames = 120; //How long the player can go without taking damage again
+dmgLagFrames = 130; //How long the player can go without taking damage again
+dmgDashFrames = 45; //How long the player will be immune to damage upon dashing
 dmgLagTimer = 0; //Timer for above
 dmgLagEnd = 10; //How many frames the player will appear normal again despite having a cooldown
 
 visible = true; //Player is visible
 global.pitFall = false; //If the player fell down a pit
 
-//-------------------------------Abilities-------------------------------\\
-global.launchFurther = false; //Launch the player further upon death, no enemy timer either
+//-------------------------------Abilities & Extra-------------------------------\\
 global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
 global.zoomies = false; //Player speed is irrationally fast
 zoomiesSpd = 12; //How fast the player runs on zoomies
+
+gemCounter = 0; //Level gem counter
