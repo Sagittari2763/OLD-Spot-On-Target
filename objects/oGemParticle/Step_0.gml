@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 timer--; //Decrease timer
 image_alpha -= 0.075; //Fade out

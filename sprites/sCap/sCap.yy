@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"sCap",
   "bboxMode":0,
-  "bbox_bottom":2,
+  "bbox_bottom":3,
   "bbox_left":0,
-  "bbox_right":5,
+  "bbox_right":4,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":3,
+  "height":4,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"29d3294e-2e8e-4720-ab47-38dc9b0f1b31","blendMode":0,"displayName":"default","isLocked":false,"name":"29d3294e-2e8e-4720-ab47-38dc9b0f1b31","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Collectables",
+    "path":"folders/Game/Sprites/Collectables.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":6,
+  "width":5,
 }

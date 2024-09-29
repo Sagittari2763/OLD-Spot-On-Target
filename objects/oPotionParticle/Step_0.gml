@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 y += 0.15; //How fast the particle travels
 image_alpha -= 0.03; //How fast the particle disappears

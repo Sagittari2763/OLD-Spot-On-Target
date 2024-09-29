@@ -6,8 +6,8 @@
   "name":"oVoid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Enemies",
+    "path":"folders/Game/Objects/Enemies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,8 +1,8 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 if !death { //If enemy is not dead
 	
 	if instance_exists(oPlayer) {playerDir = oPlayer.image_xscale} //Set current player direction for death
-	playerCheck(); if allow { //If player is not out of range
+	player_check(); if allow { //If player is not out of range
 
 	if place_meeting(x, y, oAttack) {death = true;} //Attack kills Goob
 	if place_meeting(x, y, oYoob) and oYoob.sprite_index = sYoobWalk {death = true;} //Yoob kills Goob
@@ -31,7 +31,7 @@ if !death { //If enemy is not dead
 	
 } else { //If enemy is dead
 		
-	if !particle {instance_create_depth(x, y, depth+1, oDeathParticle); particle = true;}
+	if !particle {instance_create_depth(x, y, depth+1, oGoobParticle); particle = true;}
 	instance_destroy();} //Count down air timer
 
 } else {image_speed = 0;} //Freeze sprite when paused

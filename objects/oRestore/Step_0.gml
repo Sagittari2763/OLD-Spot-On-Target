@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause
+if !instance_exists(oPause) { //Pause
 
 image_speed = 1; //Speed
 if place_meeting(x, y, oPlayer) and !used {

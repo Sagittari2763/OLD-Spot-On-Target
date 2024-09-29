@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) {
+if !instance_exists(oPause) {
 
 if place_meeting(x, y, oPlayer) and !used {
 	instance_create_depth(x-0.5, y-0.5, depth, oGemParticle);

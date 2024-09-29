@@ -37,5 +37,5 @@ function getControls() {
 	
 	//------------Pause Menu------------\\ 
 	if keyboard_check_pressed(vk_escape) {
-	if instance_exists(oPauseShader) {oPauseShader.image_alpha = 0.25; instance_destroy(oPauseShader);}
-	else {instance_create_depth(x, y, -9, oPauseShader); oPauseShader.image_alpha = 0.25;}}}
+	if instance_exists(oPause) {oPause.image_alpha = 0.25; instance_destroy(oPause);}
+	else {instance_create_depth(x, y, -9, oPause); oPause.image_alpha = 0.25;}}}

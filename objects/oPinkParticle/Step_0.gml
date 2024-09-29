@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 	
 if image_index >= 4 {restore = true;} //Reverse at a certain point
 	

@@ -1,7 +1,7 @@
 if instance_exists(oPlayer) {
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
-if !instance_exists(oPauseShader) { //Stopping player from doing anything in pause
+if !instance_exists(oPause) { //Stopping player from doing anything in pause
 mask_index = sPlayerIdle; //Set mask index
 
 //-------------------------------X Movement-------------------------------\\
@@ -60,11 +60,11 @@ if (jumpKeyBuffered and jumpCount < jumpMax) {
 	diveTrue = false; grav = normalGrav; termVel = normalVel; //Reset dive
 	jumpHoldTimer = jumpHoldFrames[jumpCount-1] //Initiate Jump
 	if jumpCount > 1 {pos = random_range(-12, 12); //Decide particle location
-		if !(jumpCount > 3) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle1);} //Create particle if the player hasn't jumped thrice
+		if !(jumpCount > 3) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle, {image_index: 1});} //Create particle if the player hasn't jumped thrice
 		pos = random_range(-6, 6); //Decide particle location
-		if !(jumpCount > 2) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle2);} //Create particle if the player hasn't jumped twice
+		if !(jumpCount > 2) {instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle, {image_index: 2});} //Create particle if the player hasn't jumped twice
 		pos = random_range(-3, 3); //Decide particle location
-		instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle3);} //Create particle
+		instance_create_depth(x+pos, y-4, oPlayer.depth+1, oJumpParticle, {image_index: 3});} //Create particle
 	setOnGround(false);} //The player is no longer on the ground after jumping
 if !jumpKey {jumpHoldTimer = 0;} //Cancel jump hold
 if jumpHoldTimer > 0 {yspd = jspd[jumpCount-1]; //Hold jump
@@ -90,16 +90,18 @@ instance_create_depth(74, 17, -8, oIcon) //Create status effects
 if place_meeting(x, y, oSpike) {healthAmount = 0;} //Player dies at spike
 	
 if place_meeting(x, y, oEnemy) and dmgLagTimer <= 0 {healthAmount--; //Removes one health
+	instance_create_depth(x, y, -1, oDashParticle); //Creates particle
 	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
 if healthAmount <= 0 {playerDeath();} //Kills player
 if y > oVoid.y {playerDeath(); global.pitFall = true;} //If the player falls out of the level
 dmgLagTimer--; //Decrease timer for damage invincibility
 if dmgLagTimer > dmgLagEnd {image_alpha = 0.5;} //Turn transparent during damage cooldown
-else {image_alpha = true;} //After damage cooldown
+else {image_alpha += 0.05;} //After damage cooldown
 
 if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack conditions
 	atkStart = atkStartup; atkTimer = atkFrames; //Setup attack
-	if runKey and slideVel > dashAtkSpd {jumpHoldTimer = 0; slideVel = moveSpd/0.5; dmgLagTimer = dmgDashFrames;} //Run dash attack
+	if runKey and slideVel > dashAtkSpd and onGround {jumpHoldTimer = 0; slideVel = moveSpd/0.5; dmgLagTimer = dmgDashFrames; //Run dash attack
+	instance_create_depth(x, y, -1, oDashParticle);} //Create status effects
 	atkCoolTimer = atkCoolFrames;} //Reset cooldown timer
 	
 if atkStart <= 0 {instance_create_depth(x-12, y-30, 0, oAttack);} //Create attack hitbox
@@ -118,6 +120,7 @@ else if !onGround {if jumpMax > jumpCount and jumpMax > 1 {sprite_index = sPlaye
 else if abs(xspd) > 0 {sprite_index = sPlayerWalk;} //Walking sprite
 else {sprite_index = sPlayerIdle;} //Idle sprite
 image_speed = 1; //Play sprite
+if image_alpha > 1 {image_alpha = 1;} //Transparency limit
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
 

@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 image_xscale = moveDir; //Sprite direction
 if global.pitFall = true {airTime = 0; jspd *= 2;} //No floating & extra jump if death is from a pit

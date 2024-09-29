@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 yspd += grav; //Gravity
 

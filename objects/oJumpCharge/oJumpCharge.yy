@@ -9,8 +9,8 @@
   "name":"oJumpCharge",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Collectables",
+    "path":"folders/Game/Objects/Collectables.yy",
   },
   "parentObjectId":null,
   "persistent":false,

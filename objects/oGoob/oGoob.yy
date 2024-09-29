@@ -9,8 +9,8 @@
   "name":"oGoob",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Enemies",
+    "path":"folders/Game/Objects/Enemies.yy",
   },
   "parentObjectId":{
     "name":"oEnemy",

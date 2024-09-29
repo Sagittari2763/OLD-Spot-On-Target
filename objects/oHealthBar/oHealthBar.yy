@@ -8,8 +8,8 @@
   "name":"oHealthBar",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"HUD",
+    "path":"folders/Game/Objects/HUD.yy",
   },
   "parentObjectId":null,
   "persistent":false,

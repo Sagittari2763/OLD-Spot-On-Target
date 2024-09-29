@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"HUD",
+    "path":"folders/Game/Sprites/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

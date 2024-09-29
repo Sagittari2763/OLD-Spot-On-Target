@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"player_controls",
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Scripts",
+    "path":"folders/Game/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

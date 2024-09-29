@@ -6,8 +6,8 @@
   "name":"oIceGround",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Ground",
+    "path":"folders/Game/Objects/Ground.yy",
   },
   "parentObjectId":{
     "name":"oGround",

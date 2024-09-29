@@ -9,8 +9,8 @@
   "name":"oPlayerTitle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Title Screen",
-    "path":"folders/Title Screen.yy",
+    "name":"Objects",
+    "path":"folders/Title Screen/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

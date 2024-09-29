@@ -1,4 +1,4 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 if place_meeting(x, y, oAttack) { //If attacked
 	x = -9999; y = -9999; activeTimer = true; atkTimer = atkFrames; //Move block temporarily

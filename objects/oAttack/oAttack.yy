@@ -6,8 +6,8 @@
   "name":"oAttack",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spot-On Target",
-    "path":"Spot-On Target.yyp",
+    "name":"Player",
+    "path":"folders/Game/Objects/Player.yy",
   },
   "parentObjectId":null,
   "persistent":false,

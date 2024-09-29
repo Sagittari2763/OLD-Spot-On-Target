@@ -11,7 +11,8 @@ termVel = 7; //How fast it can fall
 instant = true; //Does it change directions instantly instead of gradually?
 
 sprDir = 0; //Direction of sprite
+playerDir = 0; //Direction of player
 
 //----------Death----------\\
 death = false; //If the object is dead
-particle = false;
+particle = false; //Plays particle

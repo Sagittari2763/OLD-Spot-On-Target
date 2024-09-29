@@ -1,10 +1,10 @@
-if !instance_exists(oPauseShader) { //Pause menu
+if !instance_exists(oPause) { //Pause menu
 
 yspd += grav; //Gravity
 
 if !fall {yspd = jspd; fall = true;} //Jump up when not falling
 else {image_alpha -= 0.025;} //Fade out
-x += rot*0.1; //X movement
+x += rot*0.2; //X movement
 y += yspd; //Y movement
 image_angle += rot; //The rotation of the object
 
