@@ -90,8 +90,8 @@ instance_create_depth(74, 17, -8, oIcon) //Create status effects
 if place_meeting(x, y, oSpike) {healthAmount = 0;} //Player dies at spike
 	
 if place_meeting(x, y, oEnemy) and dmgLagTimer <= 0 {healthAmount--; //Removes one health
-	instance_create_depth(x, y, -1, oDashParticle); //Creates particle
-	if healthAmount > 0 {dmgLagTimer = dmgLagFrames;}} //Damage invincibility frames
+	if healthAmount > 0 {dmgLagTimer = dmgLagFrames; //Damage invincibility frames
+	instance_create_depth(x, y, -1, oDashParticle);}} //Creates particle
 if healthAmount <= 0 {playerDeath();} //Kills player
 if y > oVoid.y {playerDeath(); global.pitFall = true;} //If the player falls out of the level
 dmgLagTimer--; //Decrease timer for damage invincibility

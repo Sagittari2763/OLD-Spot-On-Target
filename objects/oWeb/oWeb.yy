@@ -1,21 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"oSpider",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oWeb",
+  "eventList":[],
   "managed":true,
-  "name":"oSpider",
+  "name":"oWeb",
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
     "path":"folders/Game/Objects/Enemies.yy",
   },
-  "parentObjectId":{
-    "name":"oEnemy",
-    "path":"objects/oEnemy/oEnemy.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sSpider",
-    "path":"sprites/sSpider/sSpider.yy",
+    "name":"sWeb",
+    "path":"sprites/sWeb/sWeb.yy",
   },
   "spriteMaskId":null,
   "visible":true,

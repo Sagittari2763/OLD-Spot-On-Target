@@ -10,6 +10,7 @@ termVel = 7; //How fast it can fall
 instant = true; //Does it change directions instantly instead of gradually?
 
 sprDir = 0; //Direction of sprite
+playerDir = 0; //Direction of player
 sprIgnore = false; //Ignore idle sprite flipping
 
 death = false; //If the object is dead
