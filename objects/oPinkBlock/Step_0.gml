@@ -1,6 +1,6 @@
 if !instance_exists(oPause) { //Pause menu
 
-if place_meeting(x, y, oAttack) { //If attacked
+if place_meeting(x, y, oAttack) or place_meeting(x, y, oAcid) { //If attacked
 	x = -9999; y = -9999; activeTimer = true; atkTimer = atkFrames; //Move block temporarily
 	instance_create_depth(initx-0.5, inity-0.5, depth, oPinkParticle);} //Create particle
 if activeTimer {atkTimer--;} //Decrease timer

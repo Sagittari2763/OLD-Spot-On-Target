@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sSpider",
-    "path":"sprites/sSpider/sSpider.yy",
+    "name":"sSpiderIdle",
+    "path":"sprites/sSpiderIdle/sSpiderIdle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

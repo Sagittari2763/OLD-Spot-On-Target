@@ -5,7 +5,9 @@ if !death { //If enemy is not dead
 	player_check(); if allow { //If player is not out of range
 
 	if place_meeting(x, y, oAttack) {death = true;} //Attack kills Goob
-	if place_meeting(x, y, oYoob) and oYoob.sprite_index = sYoobWalk {death = true;} //Yoob kills Goob
+	if place_meeting(x, y, oYoob) {death = true;} //Yoob kills Goob
+	if place_meeting(x, y, oSpike) {death = true;} //Spike kills Goob
+	if place_meeting(x, y, oAcid) {death = true;} //Acid kills Goob
 
 	if yspd = 0 {slideVel += slideTime * moveDir;} //Increase movement speed in a particular direction
 	else {if abs(yspd) > 0 {slideVel = 0;}} //Stop movement
@@ -17,10 +19,7 @@ if !death { //If enemy is not dead
 	else {sprIgnore = false; sprDir = moveDir;} //Continue flipping
 	x += slideVel; //Add onto x
 
-	if place_meeting(x, y+yspd+0.5, oGround) or place_meeting(x, y+yspd+0.5, oSpike) {yspd = 0;} //Collision
-	else {yspd += grav; slideTime = slide; image_index = 0;} //Add gravity + restart x delay time + reset anim.
-	if yspd >= termVel {yspd = termVel;} //Speed limit
-	y += yspd; //Add onto y
+	velocity(grav, termVel);
 
 	if !sprIgnore {image_xscale = -moveDir;} //Sprite direction
 	if abs(slideVel) > 0 and yspd = 0 {sprite_index = sGoobWalk;} //Walking sprite
