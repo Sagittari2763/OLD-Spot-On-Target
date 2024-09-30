@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sDeathParticle",
-    "path":"sprites/sDeathParticle/sDeathParticle.yy",
+    "name":"sGoobDeathParticle",
+    "path":"sprites/sGoobDeathParticle/sGoobDeathParticle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

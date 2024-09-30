@@ -8,7 +8,7 @@ mask_index = sPlayerIdle; //Set mask index
 if runKey and !wallHit {moveSpd = runSpd;} else {moveSpd = walkSpd;} //Running and walking speed
 if iceSlide {slideTime = iceSlideTime;} //Set ice slide
 else {slideTime = normalSlideTime;} //Set normal slide
-if global.zoomies {moveSpd = zoomiesSpd;}
+if global.zoomies {runSpd = zoomiesSpd;}
 
 moveDir = rightKey - leftKey; //Player direction
 if moveDir != 0 {moveConst = moveDir;} else {moveDir = moveConst;} //Log direction for sprite
@@ -84,11 +84,10 @@ if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground col
 y += yspd;
 
 //-------------------------------Attacking & Damage-------------------------------\\
-instance_create_depth(16, 16, -8, oHealthBar); //Create health bar
-instance_create_depth(74, 17, -8, oIcon) //Create status effects
-
 if place_meeting(x, y, oSpike) {healthAmount = 0;} //Player dies at spike
 	
+if global.lastStand = true {healthMeter = 1;}
+if healthAmount > healthMeter {healthAmount = healthMeter;}
 if place_meeting(x, y, oEnemy) and dmgLagTimer <= 0 {healthAmount--; //Removes one health
 	if healthAmount > 0 {dmgLagTimer = dmgLagFrames; //Damage invincibility frames
 	instance_create_depth(x, y, -1, oDashParticle);}} //Creates particle
@@ -126,7 +125,5 @@ if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attac
 
 }
 else {image_speed = 0;} //Freeze sprite
-
-if keyboard_check_pressed(vk_backspace) {room_goto(room);} //reset room
 
 } //Player exists bracket

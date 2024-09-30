@@ -30,7 +30,7 @@ if !death { //If enemy is not dead
 	
 } else { //If enemy is dead
 		
-	if !particle {instance_create_depth(x, y, depth+1, oGoobParticle); particle = true;}
+	if !particle {instance_create_depth(x, y+3, depth+1, oGoobParticle); particle = true;}
 	instance_destroy();} //Count down air timer
 
 } else {image_speed = 0;} //Freeze sprite when paused

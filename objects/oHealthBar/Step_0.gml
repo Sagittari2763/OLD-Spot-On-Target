@@ -1,3 +1,4 @@
+on_camera(10, 10);
 if instance_exists(oPlayer) {image_alpha = 1; //Visible hearts when player
 	if oPlayer.healthAmount = 3 {sprite_index = sHealthBar;} //Three health
 	if oPlayer.healthAmount = 2 {sprite_index = sHealthBar_1;} //Two health
