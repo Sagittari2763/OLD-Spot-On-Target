@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"sJumpRing",
   "bboxMode":0,
-  "bbox_bottom":17,
+  "bbox_bottom":19,
   "bbox_left":0,
-  "bbox_right":17,
+  "bbox_right":19,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -19,7 +19,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":18,
+  "height":20,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"8f5e21c7-6752-43b3-a8f7-f0a66616081a","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"8f5e21c7-6752-43b3-a8f7-f0a66616081a","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -99,5 +99,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":18,
+  "width":20,
 }

@@ -5,9 +5,12 @@ if !death { //If enemy is not dead
 	player_check(); if allow { //If player is not out of range
 	
 	dirLog = moveDir; //Log move direction
-	if place_meeting(x, y, oAttack) {death = true;} //Attack kills Yoob
-	if place_meeting(x, y, oSpike) {death = true;} //Spike kills Yoob
-	if place_meeting(x, y, oAcid) {death = true;} //Acid kills Yoob
+	if place_meeting(x, y, oAttack) {damage(1);} //Attack kills Yoob
+	if place_meeting(x, y, oLightning) {damage(1);} //Lightning kills Yoob
+	if place_meeting(x, y, oSpike) {damage(1);} //Spike kills Yoob
+	if place_meeting(x, y, oAcid) {damage(1);} //Acid kills Yoob
+	dmgTimer--; //Decrease damage timer
+	visualDmg();
 
 	if yspd = 0 {slideVel += slideTime * moveDir;} //Increase movement speed in a particular direction
 	if slideVel >= moveSpd {slideVel = moveSpd;} //Speed limit

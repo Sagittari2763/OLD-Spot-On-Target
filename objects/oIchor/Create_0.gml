@@ -1,3 +1,7 @@
+/*function damage(dmgAmount) {
+	hp -= dmgAmount; if hp <= 0 {death = true;} //Death
+	else {dmgTimer = dmgFrames; acidTimer = 45;}} //Damage lag, shoot acid immediately}*/
+
 acidFrames = 180; //How long it takes to spit out acid
 acidTimer = acidFrames; //Timer for above
 acidy = 0; //Position of acid y
@@ -17,9 +21,9 @@ grav = .375; //Gravity
 termVel = 7; //Max falling speed
 
 hp = 2; //Health points
-dmgFrames = 15;
-dmgTimer = 0;
-
+dmgFrames = 25; //Frames until enemy can take damage again
+dmgTimer = 0; //Timer for above
+ignoreRange = false;
 death = false; //If enemy is dead
-deathDir = 0;
-deathLog = false;
+deathDir = 0; //Direction of death
+deathLog = false; //If death has been logged

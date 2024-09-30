@@ -101,7 +101,9 @@ if atkKeyPressed and atkCoolTimer <= 0 and dmgLagTimer <= 0 { //Attack condition
 	atkStart = atkStartup; atkTimer = atkFrames; //Setup attack
 	if runKey and slideVel > dashAtkSpd and onGround {jumpHoldTimer = 0; slideVel = moveSpd/0.5; dmgLagTimer = dmgDashFrames; //Run dash attack
 	instance_create_depth(x, y, -1, oDashParticle);} //Create status effects
-	atkCoolTimer = atkCoolFrames;} //Reset cooldown timer
+	else if global.lightningAtk {instance_create_depth(x+(2*moveConst), y-16, depth+1, oLightning);}
+	atkCoolTimer = atkCoolFrames; //Reset cooldown timer
+	}
 	
 if atkStart <= 0 {instance_create_depth(x-12, y-30, 0, oAttack);} //Create attack hitbox
 atkStart--; //Decrease startup timer
@@ -123,7 +125,6 @@ if image_alpha > 1 {image_alpha = 1;} //Transparency limit
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
 
-}
-else {image_speed = 0;} //Freeze sprite
+} else {image_speed = 0;} //Freeze sprite
 
 } //Player exists bracket

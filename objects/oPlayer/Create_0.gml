@@ -13,15 +13,16 @@ function playerDeath() {
 controlsSetup(); //Sets up controls from player_controls
 
 //Camera & HUD\\
-instance_create_depth(0, 0, 0, oCamera); //Create camera
-camera_set_view_target(view_camera[0], oPlayer);
-
 instance_create_depth(x, y, -8, oHealthBar); //Create health bar
 instance_create_depth(x, y, -8, oIcon) //Create status effects
+instance_create_depth(x, y, -8, oAttackRing); //Create attack indicator
+instance_create_depth(x, y, -8, oJumpRing); //Create jump indicator
 instance_create_depth(x, y, -8, oCounter); //Create gem counter
 instance_create_depth(x, y, -8, oCount1); //Create number 1
 instance_create_depth(x, y, -8, oCount2); //Create number 2
-instance_create_depth(x, y, -8, oJumpRing); //Create jump indicator
+
+instance_create_depth(0, 0, 0, oCamera); //Create camera
+camera_set_view_target(view_camera[0], oPlayer);
 
 //-------------------------------X Movement-------------------------------\\
 xspd = 0; //How fast the player is going horizontally
@@ -107,7 +108,7 @@ global.pitFall = false; //If the player fell down a pit
 //-------------------------------Abilities & Extra-------------------------------\\
 gemCounter = 0; //Level gem counter
 
-global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
+global.lightningAtk = true; //Attacks launch lightning in the direction the player is facing
 global.zoomies = false; //Running speed is irrationally fast
 global.lastStand = false; //You only have 1 heart, but you get double gems
 

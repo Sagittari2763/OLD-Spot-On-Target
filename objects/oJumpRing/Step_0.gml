@@ -1,4 +1,4 @@
-on_camera(10, 33);
+//on_camera(32, 33);
 if instance_exists(oPlayer) {
 	if !oPlayer.onGround and oPlayer.coyoteJumpTimer <= 0 {
 		if oPlayer.jumpMax - oPlayer.jumpCount = 3 {image_index = 3;} //3 jumps left

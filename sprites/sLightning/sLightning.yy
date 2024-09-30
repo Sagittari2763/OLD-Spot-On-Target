@@ -20,11 +20,12 @@
   "height":10,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"21d6fdc0-1dc7-40ba-b24f-e9e47b4e70be","blendMode":0,"displayName":"default","isLocked":false,"name":"21d6fdc0-1dc7-40ba-b24f-e9e47b4e70be","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"a34f5121-54c6-4ab9-ba88-1d6c16fdd112","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"a34f5121-54c6-4ab9-ba88-1d6c16fdd112","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"21d6fdc0-1dc7-40ba-b24f-e9e47b4e70be","blendMode":0,"displayName":"default","isLocked":false,"name":"21d6fdc0-1dc7-40ba-b24f-e9e47b4e70be","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"sLightning",
   "nineSlice":null,
-  "origin":0,
+  "origin":3,
   "parent":{
     "name":"Player",
     "path":"folders/Game/Sprites/Player.yy",
@@ -80,7 +81,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":0,
+    "yorigin":5,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

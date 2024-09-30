@@ -10,9 +10,7 @@ _camY = clamp(_camY, 0, room_height - _camHeight); //Room border y
 finalCamX += (_camX - finalCamX) * camTrailSpd; //Camera trailing x
 finalCamY += (_camY - finalCamY) * camTrailSpd; //Camera trailing y
 
-if timer <= 0 {camera_set_view_pos(view_camera[0], finalCamX, finalCamY);}
-else {camera_set_view_pos(view_camera[0], _camX, _camY);}
-timer--;
+camera_set_view_pos(view_camera[0], finalCamX, finalCamY);
 
 //----------Control Panel----------\\
 if keyboard_check_pressed(vk_backspace) {room_goto(room);} //reset room

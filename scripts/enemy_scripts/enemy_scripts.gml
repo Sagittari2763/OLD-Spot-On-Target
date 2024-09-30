@@ -11,15 +11,15 @@ function velocity(grav, termVel){
 	y += yspd; //Insert gravity
 }
 
-function health_points(hp) {
-	death = false;
-	dmgFrames = 15;
-	dmgTimer = 0;
-	if place_meeting(x, y+0, oAttack) and dmgTimer <= 0 {hp--; //Take damage
-		if hp <= 0 {death = true;} //Death
-		else {dmgTimer = dmgFrames;}} //Damage lag
-	dmgTimer--; //Decrease damage timer
+function damage(dmgAmount) {
+	hp -= dmgAmount; //Take damage
+	if hp <= 0 {death = true;} //Death
+	else {dmgTimer = dmgFrames;} //Damage lag
 	if dmgTimer > 0 {image_blend = c_red;} //Visual damage
 	else {image_blend = c_white;} //Visual normal
 	show_debug_message(hp);
 }
+
+function visualDmg() {
+if dmgTimer > 0 image_blend = c_red; //Visual damage
+	else image_blend = c_white;} //Visual normal

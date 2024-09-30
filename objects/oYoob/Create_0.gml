@@ -13,6 +13,8 @@ instant = true; //Does it change directions instantly instead of gradually?
 sprDir = 0; //Direction of sprite
 playerDir = 0; //Direction of player
 
-//----------Death----------\\
+hp = 1; //Health points
+dmgFrames = 15; //Frames until enemy can take damage again
+dmgTimer = 0; //Timer for above
 death = false; //If the object is dead
 particle = false; //Plays particle

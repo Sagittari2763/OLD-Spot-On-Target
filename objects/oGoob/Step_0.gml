@@ -4,10 +4,13 @@ if !death { //If enemy is not dead
 	if instance_exists(oPlayer) {playerDir = oPlayer.image_xscale} //Set current player direction for death
 	player_check(); if allow { //If player is not out of range
 
-	if place_meeting(x, y, oAttack) {death = true;} //Attack kills Goob
-	if place_meeting(x, y, oYoob) {death = true;} //Yoob kills Goob
-	if place_meeting(x, y, oSpike) {death = true;} //Spike kills Goob
-	if place_meeting(x, y, oAcid) {death = true;} //Acid kills Goob
+	if place_meeting(x, y, oAttack) {damage(1);} //Attack kills Goob
+	if place_meeting(x, y, oLightning) {damage(1);} //Lightning kills Goob
+	if place_meeting(x, y, oYoob) {damage(1);} //Yoob kills Goob
+	if place_meeting(x, y, oSpike) {damage(1);} //Spike kills Goob
+	if place_meeting(x, y, oAcid) {damage(1);} //Acid kills Goob
+	dmgTimer--; //Decrease damage timer
+	visualDmg();
 
 	if yspd = 0 {slideVel += slideTime * moveDir;} //Increase movement speed in a particular direction
 	else {if abs(yspd) > 0 {slideVel = 0;}} //Stop movement
