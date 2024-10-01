@@ -7,7 +7,7 @@ function playerDeath() {
 	instance_destroy(oAttack); //Deletes any attack hitbox
 	healthAmount = 0; //Sets the health to 0
 	visible = false; //Makes the player invisible
-	instance_create_depth(x, y, oGround.depth-1, oPlayerDeath); //Spawns player death in place
+	instance_create_layer(x, y, "Fail", oPlayerDeath); //Spawns player death in place
 	instance_destroy();} //Deletes player
 
 controlsSetup(); //Sets up controls from player_controls
@@ -68,8 +68,8 @@ jumpNormal = -3.6; //How high the player can jump
 jumpRun = -4.2; //How high the player can jump while running
 jumpIce = -3.2; //How high the player can jump on ice
 jspd[1] = -3.6; //How long the player can hold a jumpcharge jump
-jspd[2] = -2.4; //How long the player can hold a second jumpcharge jump
-jspd[3] = -1.2; //How long the player can hold a third jumpcharge jump
+jspd[2] = -3.6; //How long the player can hold a second jumpcharge jump
+jspd[3] = -3.6; //How long the player can hold a third jumpcharge jump
 
 jumpIceSpd = 2.8; //How much speed is required for the player to do a full jump on ice
 jumpFrames = 24; //The period required to run before doing a higher jump

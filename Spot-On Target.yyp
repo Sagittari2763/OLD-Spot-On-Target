@@ -98,6 +98,7 @@
     {"id":{"name":"sCount","path":"sprites/sCount/sCount.yy",},},
     {"id":{"name":"sCounter","path":"sprites/sCounter/sCounter.yy",},},
     {"id":{"name":"sDashParticle","path":"sprites/sDashParticle/sDashParticle.yy",},},
+    {"id":{"name":"sDecoration","path":"sprites/sDecoration/sDecoration.yy",},},
     {"id":{"name":"sDir","path":"sprites/sDir/sDir.yy",},},
     {"id":{"name":"sDirt","path":"sprites/sDirt/sDirt.yy",},},
     {"id":{"name":"sDirtTitle","path":"sprites/sDirtTitle/sDirtTitle.yy",},},

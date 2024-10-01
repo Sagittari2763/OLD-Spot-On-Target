@@ -4,5 +4,6 @@
 function player_check(parX=500) {
 	allow = false;
 	if !instance_exists(oPlayer) {allow = true;}
-	else if (x > oPlayer.x+parX or x < oPlayer.x-parX) {allow = false;}
+	else if (x > oPlayer.x+parX or x < oPlayer.x-parX) {allow = false;
+		if oPlayer.x > x {moveDir = 1;} else {moveDir = -1;}} //Turn towards player offscreen
 	else {allow = true;}}
