@@ -1,7 +1,6 @@
 if instance_exists(oPlayer) {
 //-------------------------------Controls-------------------------------\\
 getControls(); //Defines inputs from player_controls
-if !instance_exists(oPause) { //Stopping player from doing anything in pause
 mask_index = sPlayerIdle; //Set mask index
 
 //-------------------------------X Movement-------------------------------\\
@@ -124,7 +123,5 @@ image_speed = 1; //Play sprite
 if image_alpha > 1 {image_alpha = 1;} //Transparency limit
 
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
-
-} else {image_speed = 0;} //Freeze sprite
 
 } //Player exists bracket

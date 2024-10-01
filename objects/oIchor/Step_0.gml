@@ -1,4 +1,3 @@
-if !instance_exists(oPause) { //Pause menu
 mask_index = sIchorIdle;
 player_check(); if allow { //If player is not out of range
 	if !death { //If not dead
@@ -46,8 +45,6 @@ player_check(); if allow { //If player is not out of range
 		dmgTimer--; //Decrease damage timer
 		if dmgTimer > 0 {image_blend = c_red;} //Visual damage
 		else {image_blend = c_white;} //Visual normal
-		image_alpha -= 0.15; if dmgTimer <= -20 {instance_destroy();}}
+		image_alpha -= 0.07; if dmgTimer <= -20 {instance_destroy();}}
 		
 } //Player check bracket
-
-} else {image_speed = 0;} //Freeze sprite when paused

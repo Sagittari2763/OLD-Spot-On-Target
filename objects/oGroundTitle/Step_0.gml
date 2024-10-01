@@ -1,2 +1,2 @@
 x -= 1;
-if x <= -48 {x = -32} //Screen loop
+if x <= -94 {x = -32} //Screen loop

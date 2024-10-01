@@ -1,3 +1,4 @@
+add = 0;
 part2 = random_range(0, 1);
 part3 = random_range(0, 1);
 rand1 = random_range(-10, 5)

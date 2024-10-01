@@ -1,5 +1,3 @@
-if !instance_exists(oPause) { //Pause menu
-	
 player_check(); if !allow {instance_destroy();} //Destroy if not allowed
 if (place_meeting(x, y, oEnemy) and !place_meeting(x, y, oIchor)) or place_meeting(x, y, oPlayer) or place_meeting(x, y, oGround) {
 	instance_create_depth(x, y, depth, oAcidParticle, {image_angle: moveDir}); //Create particle
@@ -8,5 +6,3 @@ if (place_meeting(x, y, oEnemy) and !place_meeting(x, y, oIchor)) or place_meeti
 x += moveSpd*moveDir; //X speed
 y += 0; //Y speed
 image_speed = 1; //Play sprite
-	
-} else {image_speed = 0;} //Stop sprite at pause

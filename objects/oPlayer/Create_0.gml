@@ -12,17 +12,24 @@ function playerDeath() {
 
 controlsSetup(); //Sets up controls from player_controls
 
-//Camera & HUD\\
-instance_create_depth(x, y, -8, oHealthBar); //Create health bar
-instance_create_depth(x, y, -8, oIcon) //Create status effects
-instance_create_depth(x, y, -8, oAttackRing); //Create attack indicator
-instance_create_depth(x, y, -8, oJumpRing); //Create jump indicator
-instance_create_depth(x, y, -8, oCounter); //Create gem counter
-instance_create_depth(x, y, -8, oCount1); //Create number 1
-instance_create_depth(x, y, -8, oCount2); //Create number 2
-
+//-------------------------------Camera & HUD-------------------------------\\
 instance_create_depth(0, 0, 0, oCamera); //Create camera
 camera_set_view_target(view_camera[0], oPlayer);
+
+instance_create_depth(x, y, 0, oHealthBar); //Create health bar
+instance_create_depth(x, y, 0, oIcon) //Create status effects
+instance_create_depth(x, y, 0, oAttackRing); //Create attack indicator
+instance_create_depth(x, y, 0, oJumpRing); //Create jump indicator
+instance_create_depth(x, y, 0, oCounter); //Create gem counter
+instance_create_depth(x, y, 0, oCount1); //Create number 1
+instance_create_depth(x, y, 0, oCount2); //Create number 2
+
+gemCounter = 0; //Level gem counter
+global.gemCount = 0; //Total gem counter
+
+global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
+global.zoomies = false; //Running speed is irrationally fast
+global.lastStand = false; //You only have 1 heart, but you get double gems
 
 //-------------------------------X Movement-------------------------------\\
 xspd = 0; //How fast the player is going horizontally
@@ -32,6 +39,7 @@ moveConst = 1; //Last direction of movement
 moveSpd = 0; //The current moving speed, walking or running
 walkSpd = 3; //Fastest walking speed
 runSpd = 7; //Fastest running speed
+zoomiesSpd = 12; //How fast the player runs on zoomies
 
 instantFrames = 6; //How many frames the player can touch a wall without losing speed
 instantTimer = 0; //Timer for above
@@ -92,10 +100,12 @@ atkStart = 0; //Timer for above
 atkFrames = 18; //How many frames the attack will last
 atkTimer = 0; //Timer for above
 atkCoolFrames = 22; //How many frames before the player can attack again
+if global.lightningAtk {atkCoolFrames *= 3;} // //How many frames before the player can zap again
 atkCoolTimer = 0; //Timer for above
 dashAtkSpd = 4; //How fast the player needs to run to dash attack
 
-healthMeter = 3; //How much health the player gets
+if global.lastStand = true {healthMeter = 1;} //Last stand health
+else healthMeter = 3; //How much health the player gets
 healthAmount = healthMeter; //How much health the player starts with
 dmgLagFrames = 130; //How long the player can go without taking damage again
 dmgDashFrames = 45; //How long the player will be immune to damage upon dashing
@@ -104,13 +114,3 @@ dmgLagEnd = 10; //How many frames the player will appear normal again despite ha
 
 visible = true; //Player is visible
 global.pitFall = false; //If the player fell down a pit
-
-//-------------------------------Abilities & Extra-------------------------------\\
-gemCounter = 0; //Level gem counter
-
-global.lightningAtk = true; //Attacks launch lightning in the direction the player is facing
-global.zoomies = false; //Running speed is irrationally fast
-global.lastStand = false; //You only have 1 heart, but you get double gems
-
-zoomiesSpd = 12; //How fast the player runs on zoomies
-if global.lightningAtk {atkCoolFrames *= 3;}

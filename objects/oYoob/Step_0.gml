@@ -1,4 +1,3 @@
-if !instance_exists(oPause) { //Pause menu
 if !death { //If enemy is not dead
 	
 	if instance_exists(oPlayer) {playerDir = oPlayer.image_xscale} //Set current player direction for death
@@ -40,5 +39,3 @@ if !death { //If enemy is not dead
 } else { //If enemy is dead
 	if !particle {instance_create_depth(x, y+3, depth+1, oGoobParticle, {sprite_index: sYoobDeathParticle}); particle = true;}
 	instance_destroy();} 
-
-} else {image_speed = 0;} //Freeze sprite

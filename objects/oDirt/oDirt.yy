@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"oGroundTitle",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oDirt",
+  "eventList":[],
   "managed":true,
-  "name":"oGroundTitle",
+  "name":"oDirt",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Title Screen/Objects.yy",
+    "name":"Ground",
+    "path":"folders/Game/Objects/Ground.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oGround",
+    "path":"objects/oGround/oGround.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sDirtTitle",
-    "path":"sprites/sDirtTitle/sDirtTitle.yy",
+    "name":"sDirt",
+    "path":"sprites/sDirt/sDirt.yy",
   },
   "spriteMaskId":null,
   "visible":true,
