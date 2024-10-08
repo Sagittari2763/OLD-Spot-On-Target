@@ -9,8 +9,8 @@
   "name":"oCamera",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Game/Objects/Player.yy",
+    "name":"HUD",
+    "path":"folders/Game/Objects/HUD.yy",
   },
   "parentObjectId":null,
   "persistent":false,

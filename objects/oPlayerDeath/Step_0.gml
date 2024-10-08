@@ -14,4 +14,5 @@ if airTime <= 0 { //If the player is not being held in the air
 else {airTime--;} //Count down air timer
 image_speed = 1; //Play sprite
 
-if keyboard_check_pressed(vk_backspace) {room_goto(room);} //reset room
+fadeTime--; //Count down reset timer
+if fadeTime = 0 and global.autoReset {room_fade(room);} //Reset room

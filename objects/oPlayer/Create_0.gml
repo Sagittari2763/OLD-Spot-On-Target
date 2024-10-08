@@ -25,10 +25,9 @@ instance_create_depth(x, y, 0, oCount1); //Create number 1
 instance_create_depth(x, y, 0, oCount2); //Create number 2
 
 gemCounter = 0; //Level gem counter
-global.gemCount = 0; //Total gem counter
 
 global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
-global.zoomies = false; //Running speed is irrationally fast
+global.zoomies = true; //Running speed is irrationally fast
 global.lastStand = false; //You only have 1 heart, but you get double gems
 
 //-------------------------------X Movement-------------------------------\\

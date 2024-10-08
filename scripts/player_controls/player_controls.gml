@@ -7,17 +7,17 @@ function controlsSetup() {
 function getControls() {
 	
 	//------------Directional Inputs------------\\
-	rightKey = keyboard_check(vk_right)+ gamepad_button_check(0, gp_padr);
-	leftKey = keyboard_check(vk_left) + gamepad_button_check(0, gp_padl);
+	rightKey = keyboard_check(global.keybindRight);
+	leftKey = keyboard_check(global.keybindLeft);
 	
 	//------------Action Inputs------------\\ 
-	jumpKeyPressed = keyboard_check_pressed(vk_up) + gamepad_button_check_pressed(0, gp_face1);
-	jumpKey = keyboard_check(vk_up) + gamepad_button_check(0, gp_face1);
-	diveKeyPressed = keyboard_check_pressed(vk_down) + gamepad_button_check_pressed(0, gp_face2);
-	duckKey = keyboard_check_pressed(vk_down) + gamepad_button_check_pressed(0, gp_face2);
-	runKey = keyboard_check(vk_shift) + gamepad_button_check(0, gp_face3);
-	runKeyPressed = keyboard_check_pressed(vk_shift) + gamepad_button_check_pressed(0, gp_face3);
-	atkKeyPressed = keyboard_check_pressed(ord("Z")) + gamepad_button_check_pressed(0, gp_face3);
+	jumpKeyPressed = keyboard_check_pressed(global.keybindJump);
+	jumpKey = keyboard_check(global.keybindJump);
+	diveKeyPressed = keyboard_check_pressed(global.keybindDown);
+	duckKey = keyboard_check_pressed(global.keybindDown);
+	runKey = keyboard_check(global.keybindRun);
+	runKeyPressed = keyboard_check_pressed(global.keybindRun);
+	atkKeyPressed = keyboard_check_pressed(global.keybindAtk);
 	
 	//------------Clamps------------\\ 
 	rightKey = clamp(rightKey,0,1);
@@ -37,5 +37,4 @@ function getControls() {
 	jumpKeyBufferTimer--;}
 	else {jumpKeyBuffered = 0;}
 	
-	//------------Pause Menu------------\\ 
-	}
+}

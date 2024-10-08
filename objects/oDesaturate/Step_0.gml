@@ -1,0 +1,1 @@
+if !global.desaturation {instance_destroy();}

@@ -9,8 +9,8 @@
   "name":"oPlay",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Title Screen/Objects.yy",
+    "name":"Menu",
+    "path":"folders/Menu/Objects/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

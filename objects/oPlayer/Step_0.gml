@@ -122,6 +122,8 @@ else {sprite_index = sPlayerIdle;} //Idle sprite
 image_speed = 1; //Play sprite
 if image_alpha > 1 {image_alpha = 1;} //Transparency limit
 
+if runKey and slideVel >= runSpd-1 {instance_create_depth(x, y, depth+1, oPhantom);} //Run trail
+
 if instance_exists(oAttack) {oAttack.x = x; oAttack.y = y-20;} //Make sure attacks follow the player
 
 } //Player exists bracket
