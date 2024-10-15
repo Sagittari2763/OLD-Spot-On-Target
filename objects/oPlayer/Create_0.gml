@@ -27,7 +27,7 @@ instance_create_depth(x, y, 0, oCount2); //Create number 2
 gemCounter = 0; //Level gem counter
 
 global.lightningAtk = false; //Attacks launch lightning in the direction the player is facing
-global.zoomies = true; //Running speed is irrationally fast
+global.zoomies = false; //Running speed is irrationally fast
 global.lastStand = false; //You only have 1 heart, but you get double gems
 
 //-------------------------------X Movement-------------------------------\\
@@ -50,6 +50,9 @@ iceSlide = false; //If the current ground is slippery
 normalSlideTime = 0.22; //How much the player can slide normally
 iceSlideTime = 0.03; //How much the player can slide on ice
 slideEndMultiplier = 1.8; //How much less the player will slide at the end of movement
+
+hangTime = 0.8; //The rate it takes for a player to slide down a wall
+onWall = false; //If the player is on the wall
 
 //-------------------------------Y Movement-------------------------------\\
 onGround = true; //If the player is on the ground
@@ -80,6 +83,7 @@ jumpHoldFrames[1] = 18; //How long the player can hold a jumpcharge jump
 jumpHoldFrames[2] = 9; //How long the player can hold a second jumpcharge jump
 jumpHoldFrames[3] = 3; //How long the player can hold a third jumpcharge jump
 jumpHoldTimer = 0; //How many frames the player has held a jump
+jumpLagSpd = 5; //How fast you need to be going for jump lag to apply
 
 pos = 0; //Position of a particle
 jumpTrue = false; //If the player input a jump

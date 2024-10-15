@@ -26,8 +26,10 @@ if place_meeting(x+xspd, y, oGround) {
 	while !place_meeting(x+_pixelCheck, y, oGround) {x += _pixelCheck;} //Scoot up to wall precisely
 	xspd = 0; jumpTimer = jumpFrames; //Collision with a wall
 	if instantTimer <= 0 {slideVel = 0;} //Slow down after timer
-	if !onGround {iceSlide = false;}} //Collision with a wall midair disables ice
-else {instantTimer = instantFrames;} //Reset timer while not colliding
+	if !onGround {iceSlide = false;} //Collision with a wall midair disables ice
+	if yspd >= 0 and atkTimer <= 0 {setOnGround(); yspd *= hangTime; onWall = true;} //Hanging onto wall and jumping, on wall
+	else {onWall = false;} //Not on wall
+} else {instantTimer = instantFrames;} //Reset timer while not colliding, not on wall
 instantTimer--; //Count timer down
 	
 x += xspd; 
@@ -73,7 +75,8 @@ _subPixel = 0.5;
 if place_meeting(x, y+yspd, oGround) {
 	var _pixelCheck = _subPixel * sign(yspd);
 	while !place_meeting(x, y+_pixelCheck, oGround) {y += _pixelCheck;} //Scoot up to wall precisely
-	if yspd < 0 {jumpHoldTimer = 0;} //Bonk your head on a ceiling tile
+	if yspd < 0 {
+		if jumpLagSpd >= slideVel {jumpHoldTimer = 0;}} //Bonk your head on a ceiling tile
 	yspd = 0;} //Collision with the ground
 
 if yspd >= 0 and place_meeting(x, y+1, oGround) {setOnGround(true); //Ground collision
