@@ -7,6 +7,7 @@ global.sfxVol = true; //Volume of sound effects
 global.musicVol = true; //Volume of music
 global.desaturation = false; //If the game's colors should be desaturated
 
+global.keybindType = false;
 global.keybindRight = vk_right;
 global.keybindLeft = vk_left;
 global.keybindJump = vk_up;

@@ -1,10 +1,28 @@
 //-------------------------------Controls-------------------------------\\
+
 //------------Controls Setup------------\\
 function controlsSetup() {
 	jumpKeyBuffered = 0;
 	jumpKeyBufferTime = 5;
 	jumpKeyBufferTimer = 0;}
+	
 function getControls() {
+	
+	//----------Controls Type----------\\
+	if global.keybindType = true {
+		global.keybindRight = ord("D");
+		global.keybindLeft = ord("A");
+		global.keybindJump = ord("W");
+		global.keybindDown = ord("S");
+		global.keybindRun = vk_shift;
+		global.keybindAtk = 191;}
+	else {
+		global.keybindRight = vk_right;
+		global.keybindLeft = vk_left;
+		global.keybindJump = vk_up;
+		global.keybindDown = vk_down;
+		global.keybindRun = vk_shift;
+		global.keybindAtk = ord("Z");}
 	
 	//------------Directional Inputs------------\\
 	rightKey = keyboard_check(global.keybindRight);

@@ -17,10 +17,10 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":32,
+  "height":33,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"32980de3-4971-4a05-aae2-95b2db615f78","blendMode":0,"displayName":"default","isLocked":false,"name":"32980de3-4971-4a05-aae2-95b2db615f78","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"775a8624-6354-47f4-ae91-8db6158b3cc0","blendMode":0,"displayName":"default","isLocked":false,"name":"775a8624-6354-47f4-ae91-8db6158b3cc0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sSettings",
   "nineSlice":null,
